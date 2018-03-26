@@ -8524,6 +8524,9 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
             gCamCapability[cameraId]->sharpness_ctrl.max_value};
     staticInfo.update(QCAMERA3_SHARPNESS_RANGE, sharpness_range, 2);
 
+    uint8_t cam_mode = is_dual_camera_by_idx(cameraId);
+    staticInfo.update(QCAMERA3_LOGICAL_CAM_MODE, &cam_mode, 1);
+
     gStaticMetadata[cameraId] = staticInfo.release();
     return rc;
 }

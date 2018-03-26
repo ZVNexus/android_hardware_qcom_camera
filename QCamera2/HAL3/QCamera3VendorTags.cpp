@@ -60,7 +60,8 @@ enum qcamera3_ext_tags qcamera3_ext3_section_bounds[QCAMERA3_SECTIONS_END -
         QCAMERA3_JPEG_ENCODE_CROP_END,
         QCAMERA3_SHARPNESS_END,
         QCAMERA3_STATS_END,
-        QCAMERA3_BRIGHTNESS_END
+        QCAMERA3_BRIGHTNESS_END,
+        QCAMERA3_LOGICAL_CAM_END
 };
 
 typedef struct vendor_tag_info {
@@ -87,7 +88,8 @@ const char *qcamera3_ext_section_names[QCAMERA3_SECTIONS_END -
     "org.codeaurora.qcamera3.jpeg_encode_crop",
     "org.codeaurora.qcamera3.sharpness",
     "org.codeaurora.qcamera3.stats",
-    "org.codeaurora.qcamera3.brightness"
+    "org.codeaurora.qcamera3.brightness",
+    "org.codeaurora.qcamera3.logical"
 };
 
 vendor_tag_info_t qcamera3_privatedata[QCAMERA3_PRIVATEDATA_END - QCAMERA3_PRIVATEDATA_START] = {
@@ -196,6 +198,10 @@ vendor_tag_info_t qcamera3_brightness[QCAMERA3_BRIGHTNESS_END -
     {"brightness_val", TYPE_FLOAT }
 };
 
+vendor_tag_info_t qcamera3_logical_cam[QCAMERA3_LOGICAL_CAM_END -
+        QCAMERA3_LOGICAL_CAM_START] = {
+    { "mode", TYPE_BYTE }
+};
 
 vendor_tag_info_t *qcamera3_tag_info[QCAMERA3_SECTIONS_END -
         VENDOR_SECTION] = {
@@ -216,7 +222,8 @@ vendor_tag_info_t *qcamera3_tag_info[QCAMERA3_SECTIONS_END -
     qcamera3_jpep_encode_crop,
     qcamera3_sharpness,
     qcamera3_stats,
-    qcamera3_brightness
+    qcamera3_brightness,
+    qcamera3_logical_cam
 };
 
 uint32_t qcamera3_all_tags[] = {
@@ -285,7 +292,10 @@ uint32_t qcamera3_all_tags[] = {
     (uint32_t)QCAMERA3_STATS_IS_HDR_SCENE,
     (uint32_t)QCAMERA3_STATS_IS_HDR_SCENE_CONFIDENCE,
     //QCAMERA3_BRIGHTNESS
-    (uint32_t)QCAMERA3_BRIGHTNESS_VALUE
+    (uint32_t)QCAMERA3_BRIGHTNESS_VALUE,
+
+    //QCAMERA3_LOGICAL_CAM
+    (uint32_t)QCAMERA3_LOGICAL_CAM_MODE
 };
 
 const vendor_tag_ops_t* QCamera3VendorTags::Ops = NULL;
